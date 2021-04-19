@@ -5,6 +5,7 @@
  */
 package model;
 
+import dao.Rental;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
