@@ -5,6 +5,8 @@
  */
 package model;
 
+import dao.Return;
+import dao.Rental;
 import java.awt.Image;
 import java.awt.Label;
 import java.sql.Connection;
