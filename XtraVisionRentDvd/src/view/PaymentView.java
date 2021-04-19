@@ -67,7 +67,7 @@ public class PaymentView extends javax.swing.JFrame {
 
         jLabel2.setText("Insert your bank Card");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\leand\\OneDrive\\Desktop\\imagens CA buttom\\headerpaint2.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/headerpaint2.png"))); // NOI18N
 
         jLabel5.setText("Digite seu mail para receber o seu recibo ");
 
