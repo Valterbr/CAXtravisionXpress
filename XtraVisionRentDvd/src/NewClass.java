@@ -1,5 +1,5 @@
 
-import model.Movies;
+import dao.Movies;
 import model.TableModel;
 import view.Register;
 import view.WellcomeView;

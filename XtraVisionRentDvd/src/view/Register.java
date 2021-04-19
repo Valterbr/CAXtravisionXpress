@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import model.Movies;
+import dao.Movies;
 import model.MoviesModel;
 import model.TableModel;
 

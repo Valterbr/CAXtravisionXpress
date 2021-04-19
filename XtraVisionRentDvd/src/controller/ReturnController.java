@@ -7,7 +7,7 @@ package controller;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import model.Return;
+import dao.Return;
 import model.ReturnModel;
 import view.ReturnView;
 

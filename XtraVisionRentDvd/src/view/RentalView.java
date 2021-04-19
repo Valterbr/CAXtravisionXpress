@@ -17,7 +17,7 @@ import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ListModel;
-import model.Rental;
+import dao.Rental;
 import model.RentalModel;
 
 

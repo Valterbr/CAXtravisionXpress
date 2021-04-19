@@ -11,7 +11,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.ListModel;
-import model.Movies;
+import dao.Movies;
 import model.MoviesModel;
 import model.TableModel;
 

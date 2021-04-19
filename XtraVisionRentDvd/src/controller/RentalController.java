@@ -5,7 +5,7 @@
  */
 package controller;
 
-import model.Rental;
+import dao.Rental;
 import model.RentalModel;
 import view.RentalView;
 
