@@ -7,7 +7,7 @@ package model;
 
 /**
  *
- * @author Valter
+ * @author Leandro
  */
 public class Movies {
     
