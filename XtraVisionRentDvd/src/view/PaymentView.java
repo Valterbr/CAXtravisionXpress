@@ -16,6 +16,8 @@ import javax.swing.JTextField;
  */
 public class PaymentView extends javax.swing.JFrame {
     PlaceHolder emailHolder;
+    
+    
 
     /**
      * Creates new form PaymentView
@@ -23,6 +25,7 @@ public class PaymentView extends javax.swing.JFrame {
     public PaymentView() {
         initComponents();
         emailHolder = new PlaceHolder(email,"email@address.com");
+        emailHolder = new PlaceHolder(cardNum,"123456789");
         
         
         
