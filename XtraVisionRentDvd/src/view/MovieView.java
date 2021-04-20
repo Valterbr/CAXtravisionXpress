@@ -102,8 +102,6 @@ public class MovieView extends javax.swing.JFrame {
         jScrollPane2.setViewportView(basket);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(630, 684));
-        setPreferredSize(new java.awt.Dimension(630, 684));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
