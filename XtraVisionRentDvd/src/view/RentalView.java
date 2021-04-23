@@ -70,6 +70,7 @@ public class RentalView extends javax.swing.JFrame {
         backToMovie = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         teste.setText("jLabel1");
 
