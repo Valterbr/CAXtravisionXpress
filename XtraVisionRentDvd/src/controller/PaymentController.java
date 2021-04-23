@@ -11,8 +11,6 @@ import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import dao.Movies;
 import model.MoviesModel;
@@ -20,7 +18,6 @@ import dao.Rental;
 import model.RentalModel;
 import view.MovieView;
 import view.PaymentView;
-import view.RentalView;
 
 /**
  *

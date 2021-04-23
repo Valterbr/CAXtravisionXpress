@@ -1,3 +1,4 @@
-Movie 0: Titanic
-Total Price 3
-Date 2021-04-21 02:54:59
+Movie 0: The Matrix
+Movie 1: Jurassic Park
+Total Price 6
+Date 2021-04-22 08:45:53
