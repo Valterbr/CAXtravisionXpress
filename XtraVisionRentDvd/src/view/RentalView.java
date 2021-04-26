@@ -172,8 +172,8 @@ public class RentalView extends javax.swing.JFrame {
          FileWriter arquivo;
 	
 	try {
-		arquivo = new FileWriter(new File("receipt.txt"));
-           char[] textoQueSeraEscrito;
+       arquivo = new FileWriter(new File("receipt.txt"));
+          
 		
              int selectedIx = jList1.getModel().getSize();
         Object sel = 0 ;
