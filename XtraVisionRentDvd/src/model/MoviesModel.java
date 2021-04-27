@@ -74,13 +74,15 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
          
          String sql = "SELECT * FROM movies where name = ?";        
         try {
+            
             stmt = con.prepareStatement(sql);
             stmt.setString(1, it.getName());
             ResultSet rs = stmt.executeQuery();
            
             if(rs.next()){
-                String name = rs.getString("name");
-                lb.setText(name);
+                it.setName(rs.getString("name")); 
+                System.out.println("teste"+it.getName());
+                //lbName.setText(name);
                
                
                
