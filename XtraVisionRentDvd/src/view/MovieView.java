@@ -6,6 +6,7 @@
 package view;
 
 import controller.MoviesController;
+import dao.Movies;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -45,9 +46,8 @@ public class MovieView extends javax.swing.JFrame {
        dm.addElement(msg);
        jList2.setModel(dm);
         
-        
-        
     }
+     
     
    
 
@@ -140,7 +140,9 @@ public class MovieView extends javax.swing.JFrame {
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
        
      new MoviesDetailView(this,jList1,dm,jList2).setVisible(true); 
+     
      controller.ShowtMoviesDetails(this, jList1, jLabel1);
+      Movies mv = new Movies();
              
     }//GEN-LAST:event_jList1MouseClicked
     

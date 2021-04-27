@@ -5,10 +5,12 @@
  */
 package controller;
 
+import dao.Movies;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import model.MoviesModel;
 import view.MovieView;
+import view.MoviesDetailView;
 
 /**
  *
@@ -24,8 +26,14 @@ public class MoviesController {
     }
     public void ShowtMoviesDetails(MovieView view, JList list, JLabel lb){
     
-     MoviesModel md = new MoviesModel();        
-     md.ShowMovieDetails(list,lb);
+     MoviesModel md = new MoviesModel(); 
+     
+     
+      // lbNmae.setText(mv.getName());
+      Movies mv = new Movies();
+      System.out.println(mv.getName());
+      md.ShowMovieDetails(list,lb);
+     
     }
     
 }
