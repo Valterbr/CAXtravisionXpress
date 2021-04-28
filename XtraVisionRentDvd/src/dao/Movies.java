@@ -25,7 +25,7 @@ public class Movies {
     private double price;
     private String isAvailable;
      // End of attributes declaration 
-    //valter Change           
+    //valter Change  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv       
    
 
     
