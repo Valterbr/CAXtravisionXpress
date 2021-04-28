@@ -158,16 +158,16 @@ public class MovieView extends javax.swing.JFrame {
        arquivo = new FileWriter(new File("receipt.txt"));
           
 		
-             int selectedIx = jList2.getModel().getSize();
+        int selectedIx = jList2.getModel().getSize();
         Object sel = 0 ;
     // Get all the selected items using the indices
        for (int i = 0; i < selectedIx; i++) {
         
-       sel  = jList1.getModel().getElementAt(i);
+         sel  = jList2.getModel().getElementAt(i).toString();
         arquivo.write("Movie "+i+": "+sel.toString()+"\n");
         System.out.println(sel);    
     }
-               // arquivo.write("Total Price "+teste.getText()+"\n");
+                //arquivo.write("Total Price "+teste.getText()+"\n");
                 arquivo.write("Date " + strDate +"\n");
                	arquivo.close();
 	} catch (IOException e) {

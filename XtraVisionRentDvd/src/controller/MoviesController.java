@@ -34,12 +34,9 @@ public class MoviesController {
     MoviesModel md = new MoviesModel();
     md.ShowMovieDetails(m,list) ;
     String name ="valter";
-    MoviesDetailView.recebe(m.getName());
-     
-     
-      // lbNmae.setText(mv.getName());
-     
-     
+      
+    MoviesDetailView.recebe(m.getName(),m.getImage());
+   
     }
     
 }

@@ -75,18 +75,25 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
          String sql = "SELECT * FROM movies where name = ?";        
         try {
             
+            
             stmt = con.prepareStatement(sql);
             stmt.setString(1, it.getName());
             ResultSet rs = stmt.executeQuery();
            
             if(rs.next()){
-                it.setName(rs.getString("name")); 
-                System.out.println("teste"+it.getName());
-                //lbName.setText(name);
-               
-               
-               
-               
+                movies.setName(rs.getString("name")); 
+                movies.setMovieId(rs.getInt("movieId"));
+                movies.setName(rs.getString("name"));
+                movies.setDirectedby(rs.getString("directedby"));
+                movies.setReleaseDate(rs.getString("releaseDate"));
+                movies.setLanguage(rs.getString("language"));
+                movies.setGender(rs.getString("gender"));
+                movies.setSubtitle(rs.getString("subtitle"));
+                movies.setAudio(rs.getString("audio"));
+                movies.setDescpription(rs.getString("descpription"));
+                movies.setImage(rs.getBytes("image"));
+                movies.setIsAvailable(rs.getString("isAvailable"));
+            
             }
         }catch (SQLException ex){
             ex.printStackTrace();

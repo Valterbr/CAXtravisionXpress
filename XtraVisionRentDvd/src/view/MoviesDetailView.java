@@ -9,10 +9,12 @@ import dao.Movies;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextField;
+import model.Renderer;
 
 /**
  *
@@ -26,18 +28,14 @@ public class MoviesDetailView extends javax.swing.JFrame {
      * Creates new form MoviesDetailView
      * 
      */
-    JList lis;
+    JList lis;    
     DefaultListModel add;
     public MoviesDetailView(MovieView view, JList list,DefaultListModel basket ,JList bk) {
           view = new MovieView();
           initComponents();
-          
-          jLabel2.setIcon(((Movies)list.getSelectedValue()).getIcon());
-        
-         // jLabel1.setText( Double.toString(list.getModel().getSize()*2.99) );
-         
-          this.add = basket;
-          this.lis = bk;  
+          this.add = basket;          
+          this.lis = bk;            
+          bk.setCellRenderer(new Renderer());
           
     }
     
@@ -52,15 +50,14 @@ public class MoviesDetailView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        Imagepanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("jLabel1");
-
-        jLabel2.setText("jLabel2");
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +68,23 @@ public class MoviesDetailView extends javax.swing.JFrame {
 
         jTextField1.setText("jTextField1");
 
+        javax.swing.GroupLayout ImagepanelLayout = new javax.swing.GroupLayout(Imagepanel);
+        Imagepanel.setLayout(ImagepanelLayout);
+        ImagepanelLayout.setHorizontalGroup(
+            ImagepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImagepanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        ImagepanelLayout.setVerticalGroup(
+            ImagepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImagepanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,30 +92,31 @@ public class MoviesDetailView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(189, Short.MAX_VALUE))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addComponent(Imagepanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(45, 45, 45)
                 .addComponent(jButton1)
-                .addGap(28, 28, 28))
+                .addGap(35, 35, 35))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Imagepanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,11 +124,13 @@ public class MoviesDetailView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        this.add.addElement(this.jLabel2.getIcon());
+              
+        this.add.addElement(new Movies(receb , new ImageIcon(imgage)));        
         this.lis.setModel(add);
-        dispose();
         
+        
+        dispose();
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -156,14 +173,22 @@ public class MoviesDetailView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Imagepanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-public void recebe(String recebe){
-    System.out.println(recebe);
+String receb;
+byte []imgage;
+public void recebe(String recebe, byte []imgs)  { 
+    this.imgage = imgs;
+    this.receb =recebe; 
+    ImageIcon icone = new ImageIcon(imgs);
+    icone.setImage(icone.getImage().getScaledInstance(Imagepanel.getWidth() -5, Imagepanel.getHeight() -10, 100));
+    jLabel2.setIcon(icone);
+   
      jTextField1.setText(recebe);
 }
 }
