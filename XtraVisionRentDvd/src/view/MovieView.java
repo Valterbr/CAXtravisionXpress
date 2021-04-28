@@ -40,6 +40,7 @@ public class MovieView extends javax.swing.JFrame {
         
         
         
+        
     }
      public MovieView(Icon msg) {
        initComponents();  
