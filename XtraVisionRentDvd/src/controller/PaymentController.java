@@ -21,7 +21,7 @@ import view.PaymentView;
 
 /**
  *
- * @author Valtertesthdjfjhhhhhhhhhhhhhhhhhhhh
+ * @author Valter teste
  */
 public class PaymentController extends PlainDocument{
     private RentalModel rCon = new RentalModel();
