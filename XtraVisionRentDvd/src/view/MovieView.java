@@ -143,7 +143,7 @@ public class MovieView extends javax.swing.JFrame {
        
     
      controller.ShowtMoviesDetails(this, jList1, jLabel1,jList2,dm);
-      
+        
     }//GEN-LAST:event_jList1MouseClicked
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
