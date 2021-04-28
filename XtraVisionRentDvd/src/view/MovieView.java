@@ -148,7 +148,7 @@ public class MovieView extends javax.swing.JFrame {
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        
+            
         System.out.println(jList2.getModel());
         Date date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -159,7 +159,7 @@ public class MovieView extends javax.swing.JFrame {
 	
 	try {
        arquivo = new FileWriter(new File("receipt.txt"));
-          
+            System.out.println("");  
 		
         int selectedIx = jList2.getModel().getSize();
         Object sel = 0 ;
