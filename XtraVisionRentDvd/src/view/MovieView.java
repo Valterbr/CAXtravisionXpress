@@ -141,11 +141,9 @@ public class MovieView extends javax.swing.JFrame {
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
        
-     new MoviesDetailView(this,jList1,dm,jList2).setVisible(true); 
-     
-     controller.ShowtMoviesDetails(this, jList1, jLabel1);
-      Movies mv = new Movies();
-             
+    
+     controller.ShowtMoviesDetails(this, jList1, jLabel1,jList2,dm);
+      
     }//GEN-LAST:event_jList1MouseClicked
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
