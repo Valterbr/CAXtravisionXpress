@@ -90,7 +90,7 @@ public class PaymentController extends PlainDocument{
             JOptionPane.showMessageDialog(pView,"transaction approved");        
             // System.out.println(emailAd);      
             if(!emailAd.equals("")){  
-               
+                
                 rCon.GenerateEmail(emailAd);
               
         }
