@@ -31,6 +31,7 @@ public class MoviesController {
     new MoviesDetailView(mv,list,dm,list2).setVisible(true);      
     MoviesModel md = new MoviesModel();
     md.ShowMovieDetails(list,lb) ;
+    
      
      
       // lbNmae.setText(mv.getName());
