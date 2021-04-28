@@ -68,7 +68,7 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
           list.setModel(dm);
  
      }
-     public void ShowMovieDetails(JList list,JLabel lb) {
+     public void ShowMovieDetails(Movies movies,JList list) {
          getConnection();
          Movies it = (Movies) list.getSelectedValue();
          

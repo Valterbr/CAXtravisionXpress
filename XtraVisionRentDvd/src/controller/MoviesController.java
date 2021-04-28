@@ -27,17 +27,18 @@ public class MoviesController {
      md.ListMovie(list);
     }
     public void ShowtMoviesDetails(MovieView view, JList list, JLabel lb, JList list2,DefaultListModel dm){
+    Movies m = new Movies();
     MovieView mv = new MovieView();
-    new MoviesDetailView(mv,list,dm,list2).setVisible(true);      
+     MoviesDetailView   MoviesDetailView = new MoviesDetailView(mv,list,dm,list2);
+    MoviesDetailView.setVisible(true);      
     MoviesModel md = new MoviesModel();
-    md.ShowMovieDetails(list,lb) ;
-    
+    md.ShowMovieDetails(m,list) ;
+    String name ="valter";
+    MoviesDetailView.recebe(m.getName());
      
      
       // lbNmae.setText(mv.getName());
      
-      System.out.println(mv.getName());
-      md.ShowMovieDetails(list,lb);
      
     }
     
