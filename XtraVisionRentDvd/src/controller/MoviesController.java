@@ -22,7 +22,7 @@ public class MoviesController {
     
     
     public void ListMovies(MovieView view, JList list){
-    
+        System.out.println("");
      MoviesModel md = new MoviesModel();        
      md.ListMovie(list);
     }
