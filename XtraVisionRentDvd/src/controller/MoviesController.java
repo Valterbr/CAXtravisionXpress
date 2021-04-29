@@ -5,7 +5,6 @@
  */
 package controller;
 
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import dao.Movies;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
