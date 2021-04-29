@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
-//tete valter 29/04
+//tete valter 29/04/20
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
