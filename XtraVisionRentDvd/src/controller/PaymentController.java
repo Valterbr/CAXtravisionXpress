@@ -32,7 +32,7 @@ import javax.swing.JList;
 import dao.Rental;
 import view.MovieView;
 import view.PaymentView;
-import view.RentalView;
+
 
 /**
  *

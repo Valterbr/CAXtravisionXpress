@@ -18,7 +18,6 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JList;
 import view.PaymentView;
-import view.RentalView;
 import view.ReturnView;
 
 /**

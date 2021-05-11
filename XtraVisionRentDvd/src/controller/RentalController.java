@@ -28,7 +28,7 @@ import dao.Rental;
 import view.MovieView;
 import view.MoviesDetailView;
 import view.PaymentView;
-import view.RentalView;
+
 
 
 /**
