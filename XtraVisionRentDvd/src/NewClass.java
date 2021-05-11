@@ -1,7 +1,6 @@
 
 import dao.Movies;
 import model.TableModel;
-import view.Register;
 import view.WellcomeView;
 
 /*

@@ -10,36 +10,54 @@ package dao;
  * @author Valter
  */
 public class Rental {
-   private  String email;   
-   private int id;
-   private int cardNumber;
-    public Rental() {
-     
-    }
-    
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(int cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-    
-    
    
+   private long creditCard;      
+   private String MovieName;
+   
+   private int moveId;  
+   private double Price;
+   private String date; 
+   
+    public String getMovieName() {
+        return MovieName;
+    }
+
+    public int getMoveId() {
+        return moveId;
+    }
+
+    public void setMoveId(int moveId) {
+        this.moveId = moveId;
+    }
+
+    
+    public void setMovieName(String MovieName) {
+        this.MovieName = MovieName;
+    }
+
+    public double getPrice() {
+        return Price;
+    }
+
+    public void setPrice(double Price) {
+        this.Price = Price;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public long getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(long creditCard) {
+        this.creditCard = creditCard;
+    }
+    
+    
 }

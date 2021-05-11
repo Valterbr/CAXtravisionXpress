@@ -5,15 +5,16 @@
  */
 package dao;
 
+import javax.swing.Icon;
+
 /**
  *
- * @author Leandro
+ * @author Valter
  */
 public class Movies {
-     
-   // Attributes declaration 
-    private int movieId;
     private String name;
+    private Icon icon;
+     private int movieId;   
     private String directedby;
     private String releaseDate;
     private String language;
@@ -24,30 +25,41 @@ public class Movies {
     private byte[] image;
     private double price;
     private String isAvailable;
-     // End of attributes declaration 
-    //valter Change  vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv       
-   
-
-    
-    //Getters and setters generating
+     
     public Movies() {
-        
     }
     
+    
+   public Movies(String name,int movieId ,Icon icon) {
+        this.movieId=   movieId;
+        this.name = name;
+        this.icon = icon;
+    }
+
+     
+    public String getName() {
+        return name;
+    }
+    
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Icon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Icon icon) {
+        this.icon = icon;
+    }
+
     public int getMovieId() {
         return movieId;
     }
 
     public void setMovieId(int movieId) {
         this.movieId = movieId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDirectedby() {
@@ -113,15 +125,15 @@ public class Movies {
     public void setImage(byte[] image) {
         this.image = image;
     }
-    
-    public double getPrice(){
-    return price;
+
+    public double getPrice() {
+        return price;
     }
-    
-    public void setPrice(double price){
-    this.price = price;
-    } 
-    
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public String getIsAvailable() {
         return isAvailable;
     }
@@ -129,10 +141,9 @@ public class Movies {
     public void setIsAvailable(String isAvailable) {
         this.isAvailable = isAvailable;
     }
-    //End getters and setters generating
 
-   
-
-  
+    
+    
+    
+    
 }
-

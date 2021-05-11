@@ -5,29 +5,30 @@
  */
 package model;
 
-import java.awt.Image;
-import java.awt.Label;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import dao.Movies;
 import dao.Payment;
 import dao.Return;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.MultiPartEmail;
-import view.ReturnView;
 
 /**
  *
  * @author Valter
  */
-public class ReturnModel {
-    private Connection con;
+public class PaymentModel {
+   // Payment payment= new Payment();
+//Payment rental = new Payment();
+// Attributes declaration     
+   
+private Connection con;
 private PreparedStatement stmt;
 private final String URL = "jdbc:mysql://apontejaj.com:3306/Valter_2019308?useSSL=false";
 private final String USER = "Valter_2019308";
@@ -46,106 +47,82 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
             throw new RuntimeException("Database Connection error: " + e);
         }
     }
- 
-   
     
-     public void UpdateAvaibilite( Return ret){
-       getConnection();
-         String sql = " UPDATE movies SET isAvailable = ? WHERE name = ? ";
-  
-    try {
-        stmt = con.prepareStatement(sql);             
-            stmt.setString(1, ret.getIsAvalible());  
-            stmt.setString(2, ret.getName());
-            stmt.execute();
-                  
-    } catch (SQLException ex) {
-            ex.printStackTrace();
-    }
     
-   }
     
-    public void GetMovieDetails(Return ret, JLabel lbImg ){
-   
-    getConnection();
-     String sql = "SELECT * FROM movies WHERE movieId  = ?";
+    
+    public void insertEmail(Payment pay){
+        
+        String sql = "INSERT INTO user ( emailAdd, cardNumber ) VALUES( ?, ?)";
         try {
-            
-             stmt = con.prepareStatement(sql);            
-             stmt.setInt(1, ret.getMovieId());
-             System.out.println(ret.getMovieId());
-             stmt.execute(); 
-             
-             ResultSet rs = stmt.executeQuery();           
-         while(rs.next()){
-             ret.setName(rs.getString("name"));
-             ret.setImage(rs.getBytes("image"));
-             ret.setPrice(rs.getDouble("price"));
-             ImageIcon image = new ImageIcon(ret.getImage());
-             Image img = image.getImage();
-             Image movieImg = img.getScaledInstance(lbImg.getWidth(), lbImg.getHeight(),Image.SCALE_SMOOTH);
-             ImageIcon NewImage = new ImageIcon(movieImg);
-             lbImg.setIcon(NewImage);
-             
-        }stmt.close();
+           // preparing the Statement to get movies to store into Database
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1,  pay.getEmail());
+            stmt.setLong(2,  pay.getCardNumber());
+            stmt.execute();
+           
         }catch( SQLException ex){
           ex.printStackTrace();
         }
-    }
+      }
     
-    public boolean exists(Return ret){
-    getConnection();
+    
+    public boolean exists(String test){
     boolean existe = false;
-    String sql = "SELECT  user.emailAdd from user join rental on user.cardNumber =  rental.userCard where moveId = ?;";
+     String sql = "SELECT * FROM user WHERE cardNumber =?";
         try {
             
              stmt = con.prepareStatement(sql);            
-             stmt.setInt(1, ret.getMovieId());
-            
+             stmt.setString(1, test);
+             System.out.println(test);
              stmt.execute(); 
              
             ResultSet rs = stmt.executeQuery();           
             if(rs.next()){
-                if (!rs.getString("emailAdd").equals("")) { 
-                   
                 existe = true;
                 System.out.println(existe);
-               }              
+                            
         }stmt.close();
         }catch( SQLException ex){
           ex.printStackTrace();
         }
     return existe;
-      }
+    
+          
+        
+    }
 
-      
-    public  void GetEmail(Return ret) {
+  
+
+    
+    
+    public  void GetEmail(Payment pay) {
        
-         String sql = "SELECT  user.emailAdd from user join rental on user.cardNumber "
-                 + "=  rental.userCard where moveId = ?;";
+         String sql = "SELECT emailAdd FROM user WHERE cardNumber  = ?";
         try {
             
              stmt = con.prepareStatement(sql);            
-             stmt.setLong(1, ret.getMovieId()); 
+             stmt.setLong(1, pay.getCardNumber()); 
              stmt.execute();  
             ResultSet rs = stmt.executeQuery();
            
             while(rs.next()){
           
              
-            ret.setEmailAdd(rs.getString("emailAdd"));
-            System.out.println(ret.getEmailAdd());
+            pay.setEmail(rs.getString("emailAdd"));
+            System.out.println(pay.getEmail());
              
             
         }}catch( SQLException ex){
           ex.printStackTrace();
         }
+    
+          
+        
     }
     
-    
-    
-      public void GenerateEmail( String emailAd  ){
-        String emailAdd = "valterbrlopes@gmail.com"; //declares a variable to store the email address  
+    public void GenerateEmail( String emailAd  ){
+    String emailAdd = "valterbrlopes@gmail.com"; //declares a variable to store the email address  
         String password = "valter123";  //declares a variable to store the password number  
         
         
@@ -174,9 +151,25 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
         e.printStackTrace();        
         
         }
-       }
-          
+}
+     public void UpdateAvaibilite(Movies movies){
+       
+       getConnection();
+         String sql = " UPDATE movies SET isAvailable = ? WHERE name = ? ";
+  
+    try {
+        stmt = con.prepareStatement(sql);
+             
+            stmt.setString(1, movies.getIsAvailable());  
+            stmt.setString(2,movies.getName());
+            stmt.execute();
+            System.out.println("updatede");
         
+    } catch (SQLException ex) {
+            ex.printStackTrace();
     }
     
+   }
+
+}
 

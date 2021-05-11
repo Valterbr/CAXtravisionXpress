@@ -16,9 +16,21 @@ public class Return {
     private double price;
     private String Date;
     private double latePrice;
+    private String isAvalible;
+    private String emailAdd;
+
+    public String getIsAvalible() {
+        return isAvalible;
+    }
+
+    public void setIsAvalible(String isAvalible) {
+        this.isAvalible = isAvalible;
+    }
+
+    
 
     public Return() {
-       
+       // this.name = "titanic";
     }
     
 
@@ -71,5 +83,13 @@ public class Return {
         this.latePrice = latePrice;
     }
 
+    public String getEmailAdd() {
+        return emailAdd;
+    }
+
+    public void setEmailAdd(String emailAdd) {
+        this.emailAdd = emailAdd;
+    }
+    
        
 }
