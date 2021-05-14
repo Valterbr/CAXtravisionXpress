@@ -14,7 +14,7 @@ import javax.swing.Icon;
 public class Movies {
     private String name;
     private Icon icon;
-     private int movieId;   
+    private int movieId;   
     private String directedby;
     private String releaseDate;
     private String language;

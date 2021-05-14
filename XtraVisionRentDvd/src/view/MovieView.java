@@ -7,19 +7,8 @@ package view;
 
 import controller.MoviesController;
 import controller.RentalController;
-import dao.Movies;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.sql.ResultSet;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -28,10 +17,10 @@ import javax.swing.JOptionPane;
  */
 public class MovieView extends javax.swing.JFrame {
 
-        DefaultListModel dm = new DefaultListModel();
-        MoviesController MoviesController;
-        RentalController rentalController;
-        PaymentView paycontroll = new PaymentView();
+        private DefaultListModel dm = new DefaultListModel();
+        private MoviesController MoviesController;
+        private RentalController rentalController;
+        private PaymentView paycontroll = new PaymentView();
     /**
      * Creates new form View
      */
@@ -41,17 +30,14 @@ public class MovieView extends javax.swing.JFrame {
          rentalController = new RentalController();
          MoviesController.ListMovies(this,jList1);
        
-        
-        
-        
-        
-    }
+        }
+    
      public MovieView(Icon msg) {
        initComponents();  
        dm.addElement(msg);
        jList2.setModel(dm);
         
-    }
+      }
      
     
    
@@ -152,18 +138,19 @@ public class MovieView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
-       
-      
-      MoviesController.ShowtMoviesDetails(this, jList1, price,jList2,dm,price);
+        MoviesController.ShowtMoviesDetails(this, jList1, price,jList2,dm,price);
       
     }//GEN-LAST:event_jList1MouseClicked
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       //rentalController.setReceipt(this, jList2,price);       
-        PaymentView register = new PaymentView(price,jList2);
-        register.setVisible(true);  
-        this.dispose();
-        register.setLocationRelativeTo(this);
+        if (jList2.getModel().getSize() > 0) {
+            PaymentView register = new PaymentView(price,jList2);
+            register.setVisible(true);  
+            this.dispose();
+            register.setLocationRelativeTo(this);
+        }else{ JOptionPane.showMessageDialog(this, "Please choose one move From the Basket");}
+     
+        
            
     }//GEN-LAST:event_jButton1ActionPerformed
 

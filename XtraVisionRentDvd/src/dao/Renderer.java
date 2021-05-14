@@ -5,10 +5,8 @@
  */
 package dao;
 
-import dao.Movies;
 import java.awt.Component;
 import javax.swing.DefaultListCellRenderer;
-import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 

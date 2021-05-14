@@ -10,11 +10,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 import dao.Movies;
 import dao.Payment;
-import dao.Return;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.MultiPartEmail;
@@ -66,15 +63,38 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
         }
       }
     
-    
-    public boolean exists(String test){
+     public boolean existsCardNum(String cardNum){
     boolean existe = false;
      String sql = "SELECT * FROM user WHERE cardNumber =?";
         try {
             
              stmt = con.prepareStatement(sql);            
-             stmt.setString(1, test);
-             System.out.println(test);
+             stmt.setString(1, cardNum);
+             System.out.println(cardNum);
+             stmt.execute(); 
+             
+            ResultSet rs = stmt.executeQuery();           
+            if(rs.next()){
+                existe = true;
+                System.out.println(existe);
+                            
+        }stmt.close();
+        }catch( SQLException ex){
+          ex.printStackTrace();
+        }
+    return existe;
+    
+          
+        
+    }
+    public boolean existsRental(String cardNum){
+    boolean existe = false;
+     String sql = "SELECT * FROM rental where userCard = ?;";
+        try {
+            
+             stmt = con.prepareStatement(sql);            
+             stmt.setString(1, cardNum);
+             System.out.println(cardNum);
              stmt.execute(); 
              
             ResultSet rs = stmt.executeQuery();           

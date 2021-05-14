@@ -6,7 +6,6 @@
 package model;
 
 import java.awt.Image;
-import java.awt.Label;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,13 +13,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import dao.Movies;
-import dao.Payment;
 import dao.Return;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.MultiPartEmail;
-import view.ReturnView;
+
 
 /**
  *
@@ -47,7 +44,32 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
         }
     }
  
-   
+   public boolean existsRental(Return ret){
+    getConnection();
+    boolean existe = false;
+     String sql = "SELECT * FROM rental where moveId = ?";
+        try {
+            
+             stmt = con.prepareStatement(sql);            
+             stmt.setInt(1, ret.getMovieId());
+            
+             stmt.execute(); 
+             
+            ResultSet rs = stmt.executeQuery();           
+            if(rs.next()){
+                existe = true;
+                System.out.println(existe);
+                            
+        }stmt.close();
+        }catch( SQLException ex){
+          ex.printStackTrace();
+        }
+    return existe;
+    
+          
+        
+    }
+
     
      public void UpdateAvaibilite( Return ret){
        getConnection();
@@ -68,12 +90,12 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
     public void GetMovieDetails(Return ret, JLabel lbImg ){
    
     getConnection();
-     String sql = "SELECT * FROM movies WHERE movieId  = ?";
+     String sql = "SELECT   movies.name, movies.image, movies.price, rental.rentalId, rental.rentaldate\n" +
+       "from movies join rental on movies.movieId =  rental.moveId where moveId = ?;";
         try {
             
              stmt = con.prepareStatement(sql);            
              stmt.setInt(1, ret.getMovieId());
-             System.out.println(ret.getMovieId());
              stmt.execute(); 
              
              ResultSet rs = stmt.executeQuery();           
@@ -81,6 +103,8 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
              ret.setName(rs.getString("name"));
              ret.setImage(rs.getBytes("image"));
              ret.setPrice(rs.getDouble("price"));
+             ret.setRentalId(rs.getInt("rentalId"));
+             ret.setRentedDate(rs.getString("rentaldate"));
              ImageIcon image = new ImageIcon(ret.getImage());
              Image img = image.getImage();
              Image movieImg = img.getScaledInstance(lbImg.getWidth(), lbImg.getHeight(),Image.SCALE_SMOOTH);
@@ -96,7 +120,8 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
     public boolean exists(Return ret){
     getConnection();
     boolean existe = false;
-    String sql = "SELECT  user.emailAdd from user join rental on user.cardNumber =  rental.userCard where moveId = ?;";
+    String sql = "SELECT  user.emailAdd from user join rental on user.cardNumber "
+            + "=  rental.userCard where moveId = ?;";
         try {
             
              stmt = con.prepareStatement(sql);            
@@ -117,7 +142,25 @@ private final String DRIVER = "com.mysql.jdbc.Driver";
         }
     return existe;
       }
-
+    
+    
+     
+     // Deletes movies from the  database
+    public void deleteMovie(Return ret){
+    getConnection();
+    String sql = "DELETE FROM rental WHERE rentalId = ?";
+    
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, ret.getRentalId());
+            stmt.execute();
+        
+        
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+    }
+    }
+    
       
     public  void GetEmail(Return ret) {
        

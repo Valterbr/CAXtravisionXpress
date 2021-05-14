@@ -5,23 +5,16 @@
  */
 package controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 import dao.Movies;
 import model.MoviesModel;
 import dao.Payment;
 import model.PaymentModel;
 import model.RentalModel;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -30,6 +23,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JList;
 import dao.Rental;
+import java.io.File;
 import view.MovieView;
 import view.PaymentView;
 
@@ -107,16 +101,7 @@ public class PaymentController extends PlainDocument{
        RentalModel rentalModel = new RentalModel();
      
          
-        for (int i =0 ; i < basket.getModel().getSize();i++){
-           
-           selectedMovie  = (Movies) basket.getModel().getElementAt(i);
-           rental.setMovieName(selectedMovie.getName());
-           rental.setMoveId(selectedMovie.getMovieId());
-           rental.setDate(getdate());
-           rental.setCreditCard(CardNun);  
-           rentalModel.insertRental(rental);
-           }
-         
+       
         MovieView movie =  new MovieView();
         DefaultListModel model= new DefaultListModel();
         getModel( movie,  model );
@@ -128,11 +113,17 @@ public class PaymentController extends PlainDocument{
        String cardNum = Long.toString(pay.getCardNumber()); 
        String emailAd = pay.getEmail();
        
-         pModel.exists(cardNum);
-        if(!pModel.exists(cardNum)){//if cardNumner doesnt exist 
-            System.out.println(pModel.exists(cardNum));
+         pModel.existsRental(cardNum);
+        
+        if(!pModel.existsRental(cardNum)){ 
+            
+            pModel.existsCardNum(cardNum);
+        
+        if(!pModel.existsCardNum(cardNum)){//if cardNumner doesnt exist 
+          
             
             if ( cardNum.length()== 16 ) {
+                 if(basket.getModel().getSize()<=2){
                 
                 cardAlert.setText("");//rremove invalid notification
                     emailAlert.setText("");//rremove invalid notification
@@ -140,15 +131,25 @@ public class PaymentController extends PlainDocument{
                     pModel.insertEmail(pay);//insert a carNumber an email
                     pModel.GetEmail(pay);
                     
-                     //set movies as rented                   
-                     movies.setIsAvailable("rented");
-                for (int i =0 ; i < basket.getModel().getSize();i++){
+                     //set movies as rented      
+                      for (int i =0 ; i < basket.getModel().getSize();i++){
+           
+                          selectedMovie  = (Movies) basket.getModel().getElementAt(i);
+                          rental.setMovieName(selectedMovie.getName());
+                          rental.setMoveId(selectedMovie.getMovieId());
+                          rental.setDate(getdate());
+                          rental.setCreditCard(CardNun);  
+                          rentalModel.insertRental(rental);
+                          }
          
-                     selectedMovie  = (Movies) basket.getModel().getElementAt(i);
-                     movies.setName(selectedMovie.getName());
+                     movies.setIsAvailable("rented");
+                     for (int i =0 ; i < basket.getModel().getSize();i++){
+         
+                          selectedMovie  = (Movies) basket.getModel().getElementAt(i);
+                           movies.setName(selectedMovie.getName());
        
-                    pModel.UpdateAvaibilite(movies);
-                     }
+                           pModel.UpdateAvaibilite(movies);
+                           }
                     JOptionPane.showMessageDialog(pView,"transaction approved");
                     
                     if(!emailAd.equals("")){// its going to send email only if Email fiel is no Null
@@ -156,17 +157,31 @@ public class PaymentController extends PlainDocument{
                         pModel.GenerateEmail(emailAd);
                     }
                    
-            }else{
+            }else{JOptionPane.showMessageDialog(null,"you cant rent more than 2 item in your first rent");
+               System.out.println("you cant rent more than 2 item in your first rent");}
+        }else{
                 cardAlert.setText("invalid card Number");
                 
             }
             
+        
+       
         
         }else{
 
             pModel.GetEmail(pay);               
             emailAd = pay.getEmail();  
               //set movies as rented  
+           for (int i =0 ; i < basket.getModel().getSize();i++){
+           
+                selectedMovie  = (Movies) basket.getModel().getElementAt(i);
+                rental.setMovieName(selectedMovie.getName());
+                rental.setMoveId(selectedMovie.getMovieId());
+                rental.setDate(getdate());
+                rental.setCreditCard(CardNun);  
+                rentalModel.insertRental(rental);
+                }
+           
              movies.setIsAvailable("rented");
             for (int i =0 ; i < basket.getModel().getSize();i++){
          
@@ -183,7 +198,11 @@ public class PaymentController extends PlainDocument{
         }  
             
        }
-      }
+      }else{
+            
+            JOptionPane.showMessageDialog(pView ,"You can´t rent a movie looks you alredy have a rental with this card");
+        }
+       }
     }
 
  

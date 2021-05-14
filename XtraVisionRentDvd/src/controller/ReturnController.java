@@ -16,8 +16,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import javax.swing.JList;
-import view.PaymentView;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import view.ReturnView;
 
 /**
@@ -29,16 +29,38 @@ public class ReturnController {
     private ReturnModel retModel = new ReturnModel();
     private Return ret = new Return();
   
-    public void getRentalDetail(ReturnView rView, JTextField idMovie, JLabel name, JLabel lbImage, JLabel price) {
-       
-    ret.setMovieId(Integer.parseInt(idMovie.getText()));
-    System.out.println(ret.getMovieId());
-    System.out.println(ret.getName());
-    retModel.GetMovieDetails(ret, lbImage );
+    public void getRentalDetail(ReturnView rView,JLabel lbPrice, JTextField idMovie, JLabel name, 
+            JLabel lbImage, JLabel price, JLabel rentalId,JLabel rentedDate,JLabel lbRentalID,
+    JLabel lbRentalDate, JLabel lbMovieName,JButton returnButton) {
    
+   ret.setMovieId(Integer.parseInt(idMovie.getText()));//Stores movie Id from Text Field   
+   retModel.existsRental(ret);//check if rental exists
+   if(retModel.existsRental(ret)){
+    retModel.GetMovieDetails(ret, lbImage );
+    lbRentalID.setText("Rental Id");
+    lbMovieName.setText("Movie Name");
+    lbRentalDate.setText("Rental date");
+    lbPrice.setText("Price");
     name.setText(ret.getName());
+    rentalId.setText(Integer.toString(ret.getRentalId()));
+    rentedDate.setText(ret.getRentedDate());
     price.setText(Double.toString( ret.getPrice()));
-    System.out.println(ret.getName());
+    returnButton.setVisible(true);
+    }else{
+   name.setText("");
+   rentalId.setText("");
+   lbImage.setIcon(null);
+   lbRentalID.setText("");
+   lbMovieName.setText("");
+   lbRentalDate.setText("");
+   lbPrice.setText("");
+   price.setText("");
+   returnButton.setVisible(false);
+     JOptionPane.showMessageDialog(rView, "couldn't recognize the disc, Please make sure you inserted the correct into the slot");
+    }
+    }
+    public void returMovie(ReturnView rView, JTextField idMovie, JLabel name,
+          JLabel lbImage, JLabel price, JLabel rentalId,JLabel rentedDate){
     ret.setIsAvalible("Avalible");
     ret.setName(name.getText());
     retModel.UpdateAvaibilite(ret);    
@@ -46,12 +68,14 @@ public class ReturnController {
     retModel.GetEmail(ret);
     String emailAd =ret.getEmailAdd();
     retModel.exists(ret);
-    System.out.println(retModel.exists(ret));
+    JOptionPane.showMessageDialog(rView, "Move was returned");
     if(retModel.exists(ret)){
     retModel.GenerateEmail(emailAd);
     }
+    ret.setRentalId(Integer.parseInt(rentalId.getText()) );
+    retModel.deleteMovie( ret);
     }
-  
+   
    public void setReceipt(ReturnView rView,  JLabel name, JLabel price){
      
         Date date = Calendar.getInstance().getTime();

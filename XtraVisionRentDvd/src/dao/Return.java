@@ -11,9 +11,11 @@ package dao;
  */
 public class Return {
     private String name;
+    private int rentalId;
     private int movieId;    
     private byte[] image;
     private double price;
+    private String rentedDate;
     private String Date;
     private double latePrice;
     private String isAvalible;
@@ -89,6 +91,22 @@ public class Return {
 
     public void setEmailAdd(String emailAdd) {
         this.emailAdd = emailAdd;
+    }
+
+    public int getRentalId() {
+        return rentalId;
+    }
+
+    public void setRentalId(int rentalId) {
+        this.rentalId = rentalId;
+    }
+
+    public String getRentedDate() {
+        return rentedDate;
+    }
+
+    public void setRentedDate(String rentedDate) {
+        this.rentedDate = rentedDate;
     }
     
        

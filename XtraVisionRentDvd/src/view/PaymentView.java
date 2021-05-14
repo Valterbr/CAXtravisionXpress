@@ -7,7 +7,6 @@ package view;
 
 import com.placeholder.PlaceHolder;
 import controller.PaymentController;
-import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
@@ -24,26 +23,22 @@ public class PaymentView extends javax.swing.JFrame {
     
     public PaymentView() {
         initComponents();
-        //placehoder();
+        
+        
     }
-     JLabel lbprice;   
-    JList basket = new JList();
+    
+    
+    private JLabel lbprice;   
+    private JList basket = new JList();
     public PaymentView(JLabel price, JList basket) {
         initComponents();
         this.basket = basket;
         this.lbprice = price;
-        //placehoder();
+        
     }
         
     
-  
-    public void placehoder(){
-    
-     holder = new PlaceHolder(email,"email@address.com");
-     holder = new PlaceHolder(cardNum,"123456789");
-    }
-    
-    /**
+      /**
      * 
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -196,7 +191,7 @@ public class PaymentView extends javax.swing.JFrame {
             }
         });
     }
-   private PlaceHolder holder;
+   
    private PaymentController pController = new PaymentController();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cardAlert;

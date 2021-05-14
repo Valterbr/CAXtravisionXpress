@@ -6,16 +6,12 @@
 package model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
-import javax.swing.JList;
 import dao.Movies;
-import dao.Payment;
+
 import dao.Rental;
 
 /**
