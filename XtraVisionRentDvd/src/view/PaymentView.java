@@ -74,7 +74,7 @@ public class PaymentView extends javax.swing.JFrame {
 
         jLabel2.setText("Insert your bank Card");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Valter\\Desktop\\ProjectOOC\\header.png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/header.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
