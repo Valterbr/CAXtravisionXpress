@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import dao.Renderer;
+import java.awt.Color;
 
 /**
  *
@@ -34,9 +35,12 @@ public class RentalView extends javax.swing.JFrame {
     private JList list;    
     private DefaultListModel add;
     
+        
+    
     public RentalView(MovieView view, JList list,DefaultListModel basketModel ,JList basketList,JLabel price) {
           view = new MovieView();
-          initComponents();
+          initComponents();         
+          getContentPane().setBackground(Color.WHITE);
           this.add = basketModel;          
           this.list = basketList ;            
           basketList.setCellRenderer(new Renderer());
@@ -382,6 +386,7 @@ public void getMoviesDetails(int id, String name, String directedBy, String genr
     this.description.setText("<html><b> "+desc+"</b></html>");
     this.lbprice.setText(Double.toString(price));
     this.isRented.setText(availability);
+    
     
 }
 }

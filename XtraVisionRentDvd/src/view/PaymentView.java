@@ -7,6 +7,7 @@ package view;
 
 import com.placeholder.PlaceHolder;
 import controller.PaymentController;
+import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
@@ -15,6 +16,7 @@ import javax.swing.JList;
  * @author Valter
  */
 public class PaymentView extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form PaymentView
@@ -23,6 +25,7 @@ public class PaymentView extends javax.swing.JFrame {
     
     public PaymentView() {
         initComponents();
+        
         
         
     }
@@ -34,6 +37,8 @@ public class PaymentView extends javax.swing.JFrame {
         initComponents();
         this.basket = basket;
         this.lbprice = price;
+        getContentPane().setBackground(Color.WHITE);
+        
         
     }
         

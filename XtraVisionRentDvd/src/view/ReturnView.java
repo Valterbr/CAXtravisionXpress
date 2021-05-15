@@ -6,6 +6,7 @@
 package view;
 
 import controller.ReturnController;
+import java.awt.Color;
 import javax.swing.JLabel;
 
 /**
@@ -19,6 +20,7 @@ public class ReturnView extends javax.swing.JFrame {
      */
     public ReturnView() {
         initComponents();
+        getContentPane().setBackground(Color.WHITE);
         jButton2.setVisible(false);
     }
 

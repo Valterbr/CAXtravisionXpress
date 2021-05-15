@@ -7,6 +7,7 @@ package view;
 
 import controller.MoviesController;
 import controller.RentalController;
+import java.awt.Color;
 import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
@@ -21,6 +22,7 @@ public class MovieView extends javax.swing.JFrame {
         private MoviesController MoviesController;
         private RentalController rentalController;
         private PaymentView paycontroll = new PaymentView();
+        
     /**
      * Creates new form View
      */
@@ -29,6 +31,9 @@ public class MovieView extends javax.swing.JFrame {
          MoviesController = new MoviesController();
          rentalController = new RentalController();
          MoviesController.ListMovies(this,jList1);
+         //Color minhaCor = new Color(255,228,2,255);
+         getContentPane().setBackground(Color.WHITE);
+         
        
         }
     
@@ -38,6 +43,7 @@ public class MovieView extends javax.swing.JFrame {
        jList2.setModel(dm);
         
       }
+     
      
     
    
@@ -64,7 +70,7 @@ public class MovieView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(204, 255, 102));
         setResizable(false);
 
         jList1.setLayoutOrientation(javax.swing.JList.VERTICAL_WRAP);
